@@ -1,0 +1,13 @@
+/* .gitignore */
+
+.env
+migrations/
+
+.ropeproject
+db.sqlite3
+
+bin/
+lib/
+*.pyc
+*__pycache__*
+pyvenv.cfg
