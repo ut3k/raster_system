@@ -1,0 +1,17 @@
+session_name: development
+windows:
+  - window_name: Vim
+    panes:
+      - shell_command:
+        - source ras_sys_env/bin/activate
+        - cd raster_system/
+        - code .
+  - window_name: Info
+    panes:
+      - shell_command:
+        - source ras_sys_env/bin/activate
+        - git status
+      - shell_command:
+        - source ras_sys_env/bin/activate
+        - cd raster_system/
+        - python manage.py runserver
