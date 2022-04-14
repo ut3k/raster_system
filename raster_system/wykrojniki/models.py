@@ -4,9 +4,9 @@ from django.db import models
 # Create your models here.
 
 
-class wykrojniki(models.Model):
+class Wykrojniki(models.Model):
     nazwa = models.CharField(max_length=120)
-    group = models.ForeignKey(wyk_group)
+    # group = models.ForeignKey(wyk_group)
     wyk_kod = models.CharField(max_length=16)
     wyk_qr = models.ImageField(upload_to="wykrojniki_qr", blank=True)
     wyk_image = models.ImageField(upload_to="wykrojniki_img", blank=True)
