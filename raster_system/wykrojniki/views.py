@@ -5,10 +5,10 @@ from .models import Wykrojniki
 # Create your views here.
 
 
-def home_view(request):
+def home_view(request, **kwarg):
     context = {
         "tresc": "tresc 1",
         "liczba1": 12,
         "napis": "treść napisu"
     }
-    return render(request, 'test.html', context)
+    return render(request, 'test.html', {"dane": context})
