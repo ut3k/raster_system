@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import home_view
+from .views import WykrojinikiListView
 
 app_name = 'wykrojniki'
 
 urlpatterns = [
-    path('', home_view, name='wyk_list'),
+    path('', WykrojinikiListView.as_view(), name='wyk_list'),
 ]

@@ -1,16 +1,13 @@
-<h2>To jest Plik testowy</h2>
-<p>
-    Tu jest jakiś pararaf
-</p>
-<h1>treść</h1>
-<p>
-    {{ dane.tresc }}
-</p>
-<h1>liczba</h1>
-<p>
-    {{ dane.liczba1 }}
-</p>
-<h1>napis</h1>
-<p>
-    {{ dane.napis }}
-</p>
+<h1>Wykrojniki</h1>
+<ul>
+    {% for wyk  in object_list %}
+        <li>
+            <h3>{{ wyk.nazwa }}</h3>
+        </li>
+        <li>{{ wyk.nazwa }} - Modyfikowany: {{ wyk.mod_date|date }}</li>
+        <li>Kod wykrojnika:{{ wyk.wyk_kod }} - Stworzony:{{ wyk.created_date|date }}</li>
+        <br>
+    {% empty %}
+        <li>Brak wykrojników</li>
+    {% endfor %}
+</ul>
