@@ -1,7 +1,7 @@
-from multiprocessing import context
-from re import template
+# from multiprocessing import context
 from django.shortcuts import render
 from .models import Wykrojniki
+from .forms import WykForm
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
@@ -26,6 +26,14 @@ class WykrojnikiDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         return context
 
+
+def create_view(request):
+    context = {}
+    form = WykForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context["form"] = form
+    return render(request, "wyk_create.html", context)
 # def home_view(request, **kwargs):
 # def home_view(request):
 #     model = Wykrojniki
