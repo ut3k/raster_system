@@ -11,9 +11,9 @@ class Wykrojniki(models.Model):
         max_length=12, help_text="wymiary w milimetrach")
     # TODO - przygotuj skaner QR
     # wyk_qr = models.ImageField(upload_to="wykrojniki_qr", blank=True)
-    wyk_image = models.ImageField(upload_to="wykrojniki_img", blank=True)
-    wyk_pdf = models.FileField(upload_to="wykrojniki_pdf", blank=True)
-    wyk_cdr = models.FileField(upload_to="wykrojniki_cdr", blank=True)
+    wyk_image = models.ImageField(upload_to="wykrojniki_img/", blank=True)
+    wyk_pdf = models.FileField(upload_to="wykrojniki_pdf/", blank=True)
+    wyk_cdr = models.FileField(upload_to="wykrojniki_cdr/", blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     # created_by =
     mod_date = models.DateTimeField(auto_now=True)

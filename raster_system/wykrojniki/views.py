@@ -30,7 +30,7 @@ class WykrojnikiDetailView(DetailView):
 
 def create_view(request):
     context = {}
-    form = WykForm(request.POST or None)
+    form = WykForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
     context["form"] = form
@@ -40,7 +40,8 @@ def create_view(request):
 def update_view(request, id):
     context = {}
     obj = get_object_or_404(Wykrojniki, id=id)
-    form = WykForm(request.POST or None, instance=obj)
+    # TODO niedziała w widoku update
+    form = WykForm(request.POST or None, request.FILES or None, instance=obj)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect('/wyk/'+id)
