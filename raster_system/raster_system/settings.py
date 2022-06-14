@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # added apps
     'wykrojniki',
+    'wydruki',
+
 ]
 
 MIDDLEWARE = [

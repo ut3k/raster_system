@@ -13,3 +13,21 @@ class WykForm(forms.ModelForm):
             "wyk_pdf",
             "wyk_cdr",
         ]
+
+
+class WykImgUpdateFrom(forms.ModelForm):
+    class Meta:
+        model = Wykrojniki
+        fields = ["wyk_image"]
+
+
+# class WykPdfUpdateFrom(forms.ModelForm):
+#     class Meta:
+#         model = Wykrojniki
+#         fields = ["wyk_pdf"]
+
+
+# class WykCdrUpdateFrom(forms.ModelForm):
+#     class Meta:
+#         model = Wykrojniki
+#         fields = ["wyk_cdr"]

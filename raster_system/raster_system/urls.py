@@ -21,7 +21,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('wykrojniki.urls', namespace='wykrojniki')),
+    path('wykrojniki', include('wykrojniki.urls', namespace='wykrojniki')),
+    path('', include('wydruki.urls', namespace='wydruki')),
+
 ]
 
 if settings.DEBUG:

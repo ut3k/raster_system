@@ -1,9 +1,8 @@
-from multiprocessing import context
 from django.shortcuts import HttpResponseRedirect, get_object_or_404, render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from .forms import WykForm
+from .forms import WykForm, WykImgUpdateFrom
 from .models import Wykrojniki
 
 # Create your views here.
@@ -40,14 +39,28 @@ def create_view(request):
 def update_view(request, id):
     context = {}
     obj = get_object_or_404(Wykrojniki, id=id)
-    # TODO niedziała w widoku update
-    form = WykForm(request.POST or None, request.FILES or None, instance=obj)
+    form = WykForm(request.POST or None, instance=obj)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect('/wyk/'+id)
 
     context["form"] = form
     return render(request, "wyk_update.html", context)
+
+
+def wyk_img_update(request, id):
+    context = {}
+    obj = get_object_or_404(Wykrojniki, id=id)
+    form = WykImgUpdateFrom(request.POST or None,
+                            request.FILES or None,
+                            instance=obj)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/wyk/'+id)
+
+    context["form"] = form
+    context["files"] = form
+    return render(request, "wyk_img_update.html", context)
 # def home_view(request, **kwargs):
 # def home_view(request):
 #     model = Wykrojniki
