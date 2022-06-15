@@ -21,8 +21,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('wykrojniki', include('wykrojniki.urls', namespace='wykrojniki')),
-    path('', include('wydruki.urls', namespace='wydruki')),
+    path('wykrojniki/', include('wykrojniki.urls', namespace='wykrojniki')),
+    path('wydruki/', include('wydruki.urls', namespace='wydruki')),
+    path('', include('sztancowanie.urls', namespace='sztancowanie')),
 
 ]
 

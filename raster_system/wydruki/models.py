@@ -13,7 +13,7 @@ class Wydruki(models.Model):
         max_digits=10, decimal_places=2, help_text="wysokość w mm")
     wyd_zamówienie = models.IntegerField()
     wyd_wykonane = models.IntegerField()
-    wyd_gotowe = models.BooleanField()
+    wyd_gotowe = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     # created_by =
     mod_date = models.DateTimeField(auto_now=True)

@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     # added apps
     'wykrojniki',
     'wydruki',
+    'sztancowanie',
+
 
 ]
 
