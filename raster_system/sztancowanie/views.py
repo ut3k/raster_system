@@ -1,4 +1,3 @@
-from multiprocessing import context
 from django.shortcuts import HttpResponseRedirect, get_object_or_404, render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView

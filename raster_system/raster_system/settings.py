@@ -48,9 +48,8 @@ INSTALLED_APPS = [
     # added apps
     'wykrojniki',
     'wydruki',
+    'kaszerowanie',
     'sztancowanie',
-
-
 ]
 
 MIDDLEWARE = [

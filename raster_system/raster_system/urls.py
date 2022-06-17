@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('wykrojniki/', include('wykrojniki.urls', namespace='wykrojniki')),
     path('wydruki/', include('wydruki.urls', namespace='wydruki')),
-    path('', include('sztancowanie.urls', namespace='sztancowanie')),
+    path('sztancowanie/', include('sztancowanie.urls', namespace='sztancowanie')),
+    path('', include('kaszerowanie.urls', namespace='kaszerowanie')),
 
 ]
 
