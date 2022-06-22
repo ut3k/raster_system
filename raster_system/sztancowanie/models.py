@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 
 # Create your models here.
@@ -11,6 +12,7 @@ class Sztancowanie(models.Model):
     szt_zamówienie = models.DecimalField(max_digits=10, decimal_places=0)
     szt_wykonane = models.DecimalField(max_digits=10, decimal_places=0)
     szt_gotowe = models.BooleanField(default=False)
+    szt_plan_date = models.DateField(default=timezone.now())
     created_date = models.DateTimeField(auto_now_add=True)
     # created_by =
     mod_date = models.DateTimeField(auto_now=True)
