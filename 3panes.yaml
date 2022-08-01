@@ -1,11 +1,11 @@
 session_name: development
 windows:
-  - window_name: Vim
+  - window_name: lVim
     panes:
       - shell_command:
         - source ras_sys_env/bin/activate
         - cd raster_system/
-        - code .
+        - lvim
   - window_name: Info
     panes:
       - shell_command:
