@@ -24,6 +24,7 @@ urlpatterns = [
     path('wykrojniki/', include('wykrojniki.urls', namespace='wykrojniki')),
     path('wydruki/', include('wydruki.urls', namespace='wydruki')),
     path('sztancowanie/', include('sztancowanie.urls', namespace='sztancowanie')),
+    path('kaszerowanie/', include('kaszerowanie.urls', namespace='kaszerowanie')),
     path('', include('kaszerowanie.urls', namespace='kaszerowanie')),
 
 ]

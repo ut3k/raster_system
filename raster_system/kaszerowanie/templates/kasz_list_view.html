@@ -1,13 +1,36 @@
-<h1>Wykrojniki</h1>
-<ul>
-    {% for wyk  in object_list %}
-        <li>
-            <h3>{{ wyk.nazwa }}</h3>
-        </li>
-        <li>{{ wyk.nazwa }} - Modyfikowany: {{ wyk.mod_date|date }}</li>
-        <li>Kod wykrojnika:{{ wyk.wyk_kod }} - Stworzony:{{ wyk.created_date|date }}</li>
-        <br>
+<h1>Kaszerowanie lista</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">NR</th>
+      <th scope="col">Klient</th>
+      <th scope="col">Nazwa</th>
+      <th scope="col">Wydruk</th>
+      <th scope="col">wykonane/zamówione</th>
+      <th scope="col">Zaplanowane</th>
+      <th scope="col">Gotowe</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for kasz in object_list %}
+    <tr>
+      <th scope="row">{{ kasz.pk }}</th>
+      <td>{{ kasz.klient }}</td>
+      <td>{{ kasz.nazwa }}</td>
+      <td>{{ kasz.wydruk }}</td>
+      <td>{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</td>
+      <td>{{ kasz.kasz_plan_date }}</td>
+      <td>{{ kasz.kasz_gotowe }}</td>
+    </tr>
     {% empty %}
-        <li>Brak wykrojników</li>
+    <tr>
+      <th scope="row">Brak Danych</th>
+      <td>Brak Danych</td>
+      <td>Brak Danych</td>
+      <td>Brak Danych</td>
+      <td>Brak Danych</td>
+      <td>Brak Danych</td>
+    </tr>
     {% endfor %}
-</ul>
+  </tbody>
+</table>
