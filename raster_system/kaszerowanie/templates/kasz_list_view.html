@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
+
+{% block title %}
+KASZEROWANIE
+{% endblock %}
 {% block content %}
 <h1>Kaszerowanie lista</h1>
-<table class="table">
+
+<h4>zadania do wykonania</h4>
+
+<!-- tabela -->
+<table class="table table-danger table-striped">
   <thead>
     <tr>
       <th scope="col">NR</th>
@@ -15,6 +23,7 @@
   </thead>
   <tbody>
     {% for kasz in object_list %}
+    {% if not kasz.kasz_gotowe %}
     <tr>
       <th scope="row">{{ kasz.pk }}</th>
       <td>{{ kasz.klient }}</td>
@@ -23,6 +32,7 @@
       <td>{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</td>
       <td>{{ kasz.kasz_plan_date }}</td>
       <td>{{ kasz.kasz_gotowe }}</td>
+      {% endif %}
     </tr>
     {% empty %}
     <tr>
@@ -36,4 +46,46 @@
     {% endfor %}
   </tbody>
 </table>
+
+
+<h4>zadania zrobione</h4>
+<!-- tablea zadania zrobione -->
+<table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th scope="col">NR</th>
+      <th scope="col">Klient</th>
+      <th scope="col">Nazwa</th>
+      <th scope="col">Wydruk</th>
+      <th scope="col">wykonane/zamówione</th>
+      <th scope="col">Zaplanowane</th>
+      <th scope="col">Gotowe</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for kasz in object_list %}
+    {% if kasz.kasz_gotowe %}
+    <tr>
+      <th scope="row">{{ kasz.pk }}</th>
+      <td>{{ kasz.klient }}</td>
+      <td>{{ kasz.nazwa }}</td>
+      <td>{{ kasz.wydruk }}</td>
+      <td>{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</td>
+      <td>{{ kasz.kasz_plan_date }}</td>
+      <td>{{ kasz.kasz_gotowe }}</td>
+      {% endif %}
+    </tr>
+    {% empty %}
+    <tr>
+      <th scope="row">Brak Danych</th>
+      <td>Brak Danych</td>
+      <td>Brak Danych</td>
+      <td>Brak Danych</td>
+      <td>Brak Danych</td>
+      <td>Brak Danych</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}

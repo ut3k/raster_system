@@ -8,7 +8,7 @@ from .models import Kaszerowanie
 class KaszerowanieListView(ListView):
     model = Kaszerowanie
     template_name = "kasz_list_view.html"
-    paginate_by = 10
+    # paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
