@@ -22,8 +22,18 @@ KASZEROWANIE
     </tr>
   </thead>
   <tbody>
-    {% for kasz in object_list %}
-    {% if not kasz.kasz_gotowe %}
+    {% for kasz in kasz_zrobic %}
+    {% if kasz.kasz_wykonane >= kasz.kasz_zamówienie %}
+    <tr class="table-success">
+      <th scope="row">{{ kasz.pk }}</th>
+      <td>{{ kasz.klient }}</td>
+      <td>{{ kasz.nazwa }}</td>
+      <td>{{ kasz.wydruk }}</td>
+      <td>{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</td>
+      <td>{{ kasz.kasz_plan_date }}</td>
+      <td>{{ kasz.kasz_gotowe }}</td>
+    </tr>
+    {% else %}
     <tr>
       <th scope="row">{{ kasz.pk }}</th>
       <td>{{ kasz.klient }}</td>
@@ -32,8 +42,8 @@ KASZEROWANIE
       <td>{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</td>
       <td>{{ kasz.kasz_plan_date }}</td>
       <td>{{ kasz.kasz_gotowe }}</td>
-      {% endif %}
     </tr>
+    {% endif %}
     {% empty %}
     <tr>
       <th scope="row">Brak Danych</th>
@@ -63,17 +73,15 @@ KASZEROWANIE
     </tr>
   </thead>
   <tbody>
-    {% for kasz in object_list %}
-    {% if kasz.kasz_gotowe %}
+    {% for kasz in kasz_zrobione %}
     <tr>
-      <th scope="row">{{ kasz.pk }}</th>
+      <th scope="row" >{{ kasz.pk }}</th>
       <td>{{ kasz.klient }}</td>
       <td>{{ kasz.nazwa }}</td>
       <td>{{ kasz.wydruk }}</td>
       <td>{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</td>
       <td>{{ kasz.kasz_plan_date }}</td>
       <td>{{ kasz.kasz_gotowe }}</td>
-      {% endif %}
     </tr>
     {% empty %}
     <tr>
