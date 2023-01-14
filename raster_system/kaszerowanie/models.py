@@ -12,7 +12,7 @@ class Kaszerowanie(models.Model):
     kasz_zamówienie = models.IntegerField(default=0)
     kasz_wykonane = models.IntegerField(default=0)
     kasz_gotowe = models.BooleanField(default=False)
-    kasz_plan_date = models.DateField(default=timezone.now())
+    # kasz_plan_date = models.DateField(default=timezone.now())
     created_date = models.DateTimeField(auto_now_add=True)
     # created_by =
     mod_date = models.DateTimeField(auto_now=True)
