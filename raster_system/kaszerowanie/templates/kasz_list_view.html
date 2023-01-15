@@ -13,7 +13,7 @@ KASZEROWANIE
 
 <div class="accordion" id="accordionPanelsStayOpenExample">
   {% for kasz in kasz_zrobic %}
-  <div class="accordion-item">
+  <div class="accordion-item my-2">
     <h2 class="accordion-header" id="panelsStayOpen-heading{{ kasz.pk }}">
       <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ kasz.pk }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ kasz.pk }}">
         kod: {{ kasz.pk }} - Klient: <b> {{ kasz.klient }} </b> - <i> {{ kasz.nazwa}} </i> - wykonano: {{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }} - Stan: {{ kasz.kasz_gotowe }}
@@ -41,12 +41,12 @@ KASZEROWANIE
 <!-- TODO -->
 <!-- zamiana danych z False, True przy stanie czy zadanie jest wykonane -->
 
-<script type="text/javascript">
-function clear() { 
-  document.body.innerHTML = document.body.innerHTML.replace('True', 'GOTOWE');
-  document.body.innerHTML = document.body.innerHTML.replace('False', 'NIE GOTOWE');
-};
-window.onload = clear();
-</script>
+<!-- <script type="text/javascript"> -->
+<!-- function clear() {  -->
+<!--   document.body.innerHTML = document.body.innerHTML.replace('True', 'GOTOWE'); -->
+<!--   document.body.innerHTML = document.body.innerHTML.replace('False', 'NIE GOTOWE'); -->
+<!-- }; -->
+<!-- window.onload = clear(); -->
+<!-- </script> -->
 
 {% endblock %}
