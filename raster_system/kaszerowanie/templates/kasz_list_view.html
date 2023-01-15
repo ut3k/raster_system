@@ -3,7 +3,9 @@
 {% block title %}
 KASZEROWANIE
 {% endblock %}
+
 {% block content %}
+
 <div class=" my-4 mx-0 p-1">
   <h1>Kaszerowanie lista</h1>
   <h4 class='px-2'>zadania do wykonania</h4>
@@ -14,15 +16,17 @@ KASZEROWANIE
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-heading{{ kasz.pk }}">
       <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ kasz.pk }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ kasz.pk }}">
-        nr. {{ kasz.pk }} - <b>Klient: {{ kasz.klient }}</b> - wykonano: {{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }} - Stan: {{ kasz.kasz_gotowe }}
+        kod: {{ kasz.pk }} - Klient: <b> {{ kasz.klient }} </b> - <i> {{ kasz.nazwa}} </i> - wykonano: {{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }} - Stan: {{ kasz.kasz_gotowe }}
       </button>
     </h2>
     <div id="panelsStayOpen-collapse{{ kasz.pk }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ kasz.pk }}">
       <div class="accordion-body">
-        <h5 class="card-title">Nazwa zadania:{{ kasz.nazwa }}</h5>
-        <p class="card-text">Połączyć: {{ kasz.wydruk }} + {{kasz.material}}</p>
-        <p class="card-text">Zostało wykonane:{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</p>
-        <p class="card-text">Zaplanowane na dzień: {{ kasz.kasz_plan_date }} </p>
+        <p>Nazwa: {{ kasz.nazwa }}</p>
+        <p>Zadanie: {{ kasz.wydruk }} + {{kasz.material}}</p>
+        <p>Stan:{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</p>
+        <p></p>
+        <p>Zaplanowane na dzień: {{ kasz.kasz_plan_date }} </p>
+        <p>Utworzone: {{ kasz.created_date }} / Zmodyfikowane: {{ kasz.mod_date }} </p>
         <a href="#" class="btn btn-primary">Szczegóły</a>
         <a href="#" class="btn btn-primary">Edytuj</a>
         <a href="#" class="btn btn-primary">Dodaj</a>
@@ -32,66 +36,17 @@ KASZEROWANIE
   {% endfor %}
 </div>
 
-<div class="accordion-item">
-  <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-      Accordion Item #2
-    </button>
-  </h2>
-  <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-    <div class="accordion-body">
-      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-    </div>
-  </div>
-</div>
 
-<h4>zadania zrobione</h4>
-<!-- tablea zadania zrobione -->
-<table class="table table-success table-striped">
-  <thead>
-    <tr>
-      <th scope="col">NR</th>
-      <th scope="col">Klient</th>
-      <th scope="col">Nazwa</th>
-      <th scope="col">Wydruk</th>
-      <th scope="col">wykonane/zamówione</th>
-      <th scope="col">Zaplanowane</th>
-      <th scope="col">Gotowe</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for kasz in kasz_zrobione %}
-    <tr>
-      <th scope="row" >{{ kasz.pk }}</th>
-      <td>{{ kasz.klient }}</td>
-      <td>{{ kasz.nazwa }}</td>
-      <td>{{ kasz.wydruk }}</td>
-      <td>{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</td>
-      <td>{{ kasz.kasz_plan_date }}</td>
-      <td>{{ kasz.kasz_gotowe }}</td>
-    </tr>
-    {% empty %}
-    <tr>
-      <th scope="row">Brak Danych</th>
-      <td>Brak Danych</td>
-      <td>Brak Danych</td>
-      <td>Brak Danych</td>
-      <td>Brak Danych</td>
-      <td>Brak Danych</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
 
 <!-- TODO -->
 <!-- zamiana danych z False, True przy stanie czy zadanie jest wykonane -->
 
-<!-- <script type="text/javascript"> -->
-<!-- function clear() {  -->
-<!--   document.body.innerHTML = document.body.innerHTML.replace('True', 'GOTOWE'); -->
-<!--   document.body.innerHTML = document.body.innerHTML.replace('False', 'NIE GOTOWE'); -->
-<!-- }; -->
-<!-- window.onload = clear(); -->
-<!-- </script> -->
+<script type="text/javascript">
+function clear() { 
+  document.body.innerHTML = document.body.innerHTML.replace('True', 'GOTOWE');
+  document.body.innerHTML = document.body.innerHTML.replace('False', 'NIE GOTOWE');
+};
+window.onload = clear();
+</script>
 
 {% endblock %}
