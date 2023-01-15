@@ -9,22 +9,41 @@ KASZEROWANIE
   <h4 class='px-2'>zadania do wykonania</h4>
 </div>
 
-<!-- tabela -->
-{% for kasz in kasz_zrobic %}
-<div class="card my-4">
-  <div class="card-header text-white bg-danger">{{ kasz.pk }}.Klient: {{ kasz.klient }} / Stan: {{ kasz.kasz_gotowe }}</div>
-  <div class="card-body">
-    <h5 class="card-title">Nazwa zadania:{{ kasz.nazwa }}</h5>
-    <p class="card-text">Połączyć: {{ kasz.wydruk }} + {{kasz.material}}</p>
-    <p class="card-text">Zostało wykonane:{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</p>
-    <p class="card-text">Zaplanowane na dzień: {{ kasz.kasz_plan_date }} </p>
-    <a href="#" class="btn btn-primary">Szczegóły</a>
-    <a href="#" class="btn btn-primary">Edytuj</a>
-    <a href="#" class="btn btn-primary">Dodaj</a>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  {% for kasz in kasz_zrobic %}
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-heading{{ kasz.pk }}">
+      <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ kasz.pk }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ kasz.pk }}">
+        nr. {{ kasz.pk }} - <b>Klient: {{ kasz.klient }}</b> - wykonano: {{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }} - Stan: {{ kasz.kasz_gotowe }}
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapse{{ kasz.pk }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ kasz.pk }}">
+      <div class="accordion-body">
+        <h5 class="card-title">Nazwa zadania:{{ kasz.nazwa }}</h5>
+        <p class="card-text">Połączyć: {{ kasz.wydruk }} + {{kasz.material}}</p>
+        <p class="card-text">Zostało wykonane:{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</p>
+        <p class="card-text">Zaplanowane na dzień: {{ kasz.kasz_plan_date }} </p>
+        <a href="#" class="btn btn-primary">Szczegóły</a>
+        <a href="#" class="btn btn-primary">Edytuj</a>
+        <a href="#" class="btn btn-primary">Dodaj</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="accordion-item">
+  <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+      Accordion Item #2
+    </button>
+  </h2>
+  <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+    <div class="accordion-body">
+      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+    </div>
   </div>
 </div>
-{% endfor %}
-
 
 <h4>zadania zrobione</h4>
 <!-- tablea zadania zrobione -->
