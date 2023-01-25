@@ -6,55 +6,39 @@ KASZEROWANIE
 
 {% block content %}
 
-<div class=" my-4 mx-0 p-1">
+<div class="my-4 mx-1 p-1 border border-primary rounded">
   <h1>Kaszerowanie lista</h1>
   <h4 class='px-2'>zadania do wykonania</h4>
 </div>
 
-<div class="accordion" id="accordionPanelsStayOpenExample">
+<div>
   {% for kasz in kasz_zrobic %}
-  <div class="accordion-item my-2">
-    <h2 class="accordion-header" id="panelsStayOpen-heading{{ kasz.pk }}">
-      <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ kasz.pk }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ kasz.pk }}">
-        kod: {{ kasz.pk }} - Klient: <b> {{ kasz.klient }} </b> - <i> {{ kasz.nazwa}} </i> - wykonano: {{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }} - Stan: {{ kasz.kasz_gotowe }}
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapse{{ kasz.pk }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ kasz.pk }}">
-      <div class="accordion-body">
-        <p>Nazwa: {{ kasz.nazwa }}</p>
+  <div class="border rounded my-3 px-3 py-1">
+    <div class="row py-1">
+      <div class="col-sm-2 col-md-6">
+        <h4 class="m-1">Kod:{{ kasz.pk }} - Klient: {{ kasz.klient }} </h4>
+      </div>
+      <div class="col d-flex">
+        <p class="m-1">{{ kasz.nazwa}}</p> 
+        <p class="m-1">{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</p> 
+      </div>
+      <div class="col d-flex">  
+        <a href="#" class="btn btn-primary m-1">Edytuj</a>
+        <a href="#" class="btn btn-primary m-1">Dodaj</a>
+        <button class="btn btn-primary m-1" type="button" data-bs-toggle="collapse" data-bs-target="#element{{ kasz.pk }}" aria-expanded="false" aria-controls="collapseExample"> szczegóły</button>
+      </div>
+    </div>
+    <div class="collapse" id="element{{ kasz.pk }}">
+      <div class="card card-body my-2">
+        <p>{{ kasz.nazwa }}</p>
         <p>Zadanie: {{ kasz.wydruk }} + {{kasz.material}}</p>
         <p>Stan:{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</p>
-        <p></p>
         <p>Zaplanowane na dzień: {{ kasz.kasz_plan_date }} </p>
         <p>Utworzone: {{ kasz.created_date }} / Zmodyfikowane: {{ kasz.mod_date }} </p>
-        <a href="#" class="btn btn-primary">Szczegóły</a>
-        <a href="#" class="btn btn-primary">Edytuj</a>
-        <a href="#" class="btn btn-primary">Dodaj</a>
       </div>
     </div>
   </div>
   {% endfor %}
 </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-2"><h4>kod: {{ kasz.pk }}</h4></div>
-    <div class="col"></div>
-    <div class="col"></div>
-    <div class="col"></div>
-
-  </div>
-</div>
-
-<!-- TODO -->
-<!-- zamiana danych z False, True przy stanie czy zadanie jest wykonane -->
-
-<!-- <script type="text/javascript"> -->
-<!-- function clear() {  -->
-<!--   document.body.innerHTML = document.body.innerHTML.replace('True', 'GOTOWE'); -->
-<!--   document.body.innerHTML = document.body.innerHTML.replace('False', 'NIE GOTOWE'); -->
-<!-- }; -->
-<!-- window.onload = clear(); -->
-<!-- </script> -->
 
 {% endblock %}
