@@ -9,6 +9,15 @@ def kasz_list(request):
     kasz_zrobione = Kaszerowanie.objects.filter(kasz_gotowe="True")
     return render(request,"kasz_list_view.html", {"kasz_zrobic":kasz_zrobic, "kasz_zrobione":kasz_zrobione} )
 
+def kasz_list_done(request):
+    kasz_done= Kaszerowanie.objects.filter(kasz_gotowe="True").order_by("-created_date")
+    kasz_done_title = "Zadania wykonane"
+    return render(request,"kasz_list_table.html", {"kasz_tab_data":kasz_done, "kasz_title":kasz_done_title})
+
+def kasz_list_all(request):
+    kasz_done= Kaszerowanie.objects.order_by("-created_date")
+    kasz_done_title = "Zadania wykonane"
+    return render(request,"kasz_list_table.html", {"kasz_tab_data":kasz_done, "kasz_title":kasz_done_title})
 
 class KaszerowanieListView(ListView):
     model = Kaszerowanie
