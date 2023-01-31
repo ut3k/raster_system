@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+KASZEROWANIE
+{% endblock %}
+
+{% block content %}
+
+<div class="my-4 mx-1 p-1 border border-primary rounded">
+  <h1>{{ kasz_title }}</h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">KOD</th>
+      <th scope="col">Klient</th>
+      <th scope="col">Nazwa</th>
+      <th scope="col">Stan</th>
+      <th scope="col">Modyfikacja</th>
+      <th scope="col">Zakończone</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in kasz_tab_data %}
+    <tr>
+      <th scope="row">{{data.pk}}</th>
+      <td>{{data.klient}}</td>
+      <td>{{data.nazwa}}</td>
+      <td> {{ data.kasz_wykonane}}/ {{data.kasz_zamówienie}}</td>
+      <td>{{data.mod_date}}</td>
+      <td>{{data.kasz_gotowe}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}
