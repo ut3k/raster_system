@@ -1,6 +1,21 @@
-<h1>Szablon szczegółowy Wykrojnika {{ object.nazwa }}</h1>
-<h4>Kod wykrojnika: {{ object.wyk_kod }}</h4>
+{% extends 'base.html' %}
+
+{% block title %}
+KASZEROWANIE
+{% endblock %}
+
+
+{% block content %}
+<div class="my-4 mx-1 p-1 border border-primary rounded">
+  <h1>Szczegóły  kaszerowanie: </h1>
+  <h2>{{ object.klient }}/{{ object.nazwa }}</h2>
+  <h3> kod kaszerowania: {{object.pk}}</h3>
+  <h4>Kod wykrojnika: {{ object.wyk_kod }}</h4>
+</div
+
 <ul>
     <li>data utworzenia: {{ object.created_date }}</li>
     <li>data modyfikacji: {{ object.mod_date }}</li>
 </ul>
+
+{% endblock %}

@@ -31,7 +31,7 @@ class KaszerowanieListView(ListView):
 
 class KaszerowanieDetailView (DetailView):
     model = Kaszerowanie
-    template_name = "kasz_list_view.html"
+    template_name = "kasz_detail_view.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
