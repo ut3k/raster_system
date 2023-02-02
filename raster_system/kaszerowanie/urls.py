@@ -16,5 +16,5 @@ urlpatterns = [
     path('all', kasz_list_all , name='kasz_list_all'),
     path('done', kasz_list_done , name='kasz_list_done'),
     path('kasz/<pk>/', KaszerowanieDetailView.as_view(), name='kasz_detail'),
-    path('kasz/new/',kasz_new, name='kasz_new'),
+    path('kasz_new/',kasz_new, name='kasz_new'),
 ]

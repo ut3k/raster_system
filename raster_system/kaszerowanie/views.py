@@ -38,6 +38,16 @@ class KaszerowanieDetailView (DetailView):
         context = super().get_context_data(**kwargs)
         return context
 
+
 def kasz_new(request):
-    form = KaszForm
-    return render(request, 'kasz_new.html', {'form':form})
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+        else:
+            form = PostForm()
+            return render(request, 'blog/post_edit.html', {'form': form})
