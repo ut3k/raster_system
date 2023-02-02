@@ -6,16 +6,38 @@ KASZEROWANIE
 
 
 {% block content %}
-<div class="my-4 mx-1 p-1 border border-primary rounded">
-  <h1>Szczegóły  kaszerowanie: </h1>
-  <h2>{{ object.klient }}/{{ object.nazwa }}</h2>
-  <h3> kod kaszerowania: {{object.pk}}</h3>
-  <h4>Kod wykrojnika: {{ object.wyk_kod }}</h4>
-</div
 
-<ul>
-    <li>data utworzenia: {{ object.created_date }}</li>
-    <li>data modyfikacji: {{ object.mod_date }}</li>
-</ul>
+<div class="conatiner">
+  <div class="my-4 mx-1 p-2 border bg-info text-light rounded">
+    <h5>kaszerowanie: </h5>
+    <h3>{{ object.klient }}/{{ object.nazwa }}</h3>
+    <h4> kod kaszerowania: {{object.pk}}</h4>
+  </div
+</div>
+
+<div class="container">
+  <div class="my-4  p-2 border rounded">
+    <p>Wydruk: {{ object.wydruk }}</p>
+    <p>Materiał: {{ object.material }}</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="my-4  p-2 border rounded">
+    <p>zamówione: {{ object.kasz_zamówienie }}</p>
+    <p>Wykonane: {{ object.kasz_wykonane }}</p>
+    <p>Zadanie wykonane: {{ object.kasz_gotowe }}</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="my-4 mx-x p-2 border rounded">
+    <h4>status</h4>
+    <ul>
+      <li>data utworzenia: {{ object.created_date }}</li>
+      <li>data modyfikacji: {{ object.mod_date }}</li>
+    </ul>
+  </div>
+</div>
 
 {% endblock %}
