@@ -6,9 +6,10 @@ from .forms import KaszForm
 from .models import Kaszerowanie
 
 def kasz_list(request):
-    kasz_zrobic = Kaszerowanie.objects.filter(kasz_gotowe="False")
-    kasz_zrobione = Kaszerowanie.objects.filter(kasz_gotowe="True")
-    return render(request,"kasz_list_view.html", {"kasz_zrobic":kasz_zrobic, "kasz_zrobione":kasz_zrobione} )
+    kasz_todo = Kaszerowanie.objects.filter(kasz_gotowe="False")
+    kasz_todo_title = "zadania do wykonania"
+    # kasz_zrobione = Kaszerowanie.objects.filter(kasz_gotowe="True")
+    return render(request,"kasz_list_view.html", {"kasz_zrobic":kasz_todo, "title":kasz_todo_title} )
 
 def kasz_list_done(request):
     kasz_done= Kaszerowanie.objects.filter(kasz_gotowe="True").order_by("-created_date")
@@ -17,7 +18,7 @@ def kasz_list_done(request):
 
 def kasz_list_all(request):
     kasz_done= Kaszerowanie.objects.order_by("-created_date")
-    kasz_done_title = "Zadania wykonane"
+    kasz_done_title = "wszystkie zadania"
     return render(request,"kasz_list_table.html", {"kasz_tab_data":kasz_done, "kasz_title":kasz_done_title})
 
 class KaszerowanieListView(ListView):
