@@ -1,5 +1,15 @@
-// document.body.innerHTML = document.body.innerHTML.replace('False', 'NIE');
-function clear() { 
-  document.body.innerHTML = document.body.replace('False', 'NIE'); 
+const job_status_list = document.getElementsByClassName('jobstatus');
+
+function rename_status(list){
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].innerHTML=="False") {
+            list[i].innerHTML="NIE";
+          }
+    else {
+      list[i].innerHTML="TAK"
+    }
+      }
 }
-window.onload = clear();
+
+rename_status(job_status_list)
+
