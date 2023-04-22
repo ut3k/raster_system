@@ -1,5 +1,7 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, HttpResponse
 from django.views.generic import DetailView, ListView
+
 from .forms import KaszForm
 
 # Create your views here.
@@ -16,10 +18,26 @@ def kasz_list_done(request):
     kasz_done_title = "Zadania wykonane"
     return render(request,"kasz_list_table.html", {"kasz_tab_data":kasz_done, "kasz_title":kasz_done_title})
 
+# table view all set
 def kasz_list_all(request):
-    kasz_done= Kaszerowanie.objects.order_by("-created_date")
-    kasz_done_title = "wszystkie zadania"
-    return render(request,"kasz_list_table.html", {"kasz_tab_data":kasz_done, "kasz_title":kasz_done_title})
+    kasz_all_set= Kaszerowanie.objects.all().order_by("-mod_date")
+    kasz_all_title = "wszystkie zadania"
+    kasz_page_number = request.GET.get('page')
+    paginator = Paginator(kasz_all_set, 8)
+    kasz_all = paginator.get_page(kasz_page_number)
+
+    # try:
+    #     kasz_all = paginator.page(kasz_page_number)
+    # except PageNotAnInteger:
+    #     kasz_all = paginator.page(1)
+    # except EmptyPage:
+    #     kasz_all = paginator.page(paginator.num_pages)
+
+    context = {
+            "kasz_tab_data":kasz_all,
+            "kasz_title":kasz_all_title
+            }
+    return render(request,"kasz_list_table.html", context)
 
 class KaszerowanieListView(ListView):
     model = Kaszerowanie
