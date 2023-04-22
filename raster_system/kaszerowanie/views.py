@@ -24,14 +24,14 @@ def kasz_list_all(request):
     kasz_all_title = "wszystkie zadania"
     kasz_page_number = request.GET.get('page')
     paginator = Paginator(kasz_all_set, 8)
-    kasz_all = paginator.get_page(kasz_page_number)
+    # kasz_all = paginator.get_page(kasz_page_number)
 
-    # try:
-    #     kasz_all = paginator.page(kasz_page_number)
-    # except PageNotAnInteger:
-    #     kasz_all = paginator.page(1)
-    # except EmptyPage:
-    #     kasz_all = paginator.page(paginator.num_pages)
+    try:
+        kasz_all = paginator.page(kasz_page_number)
+    except PageNotAnInteger:
+        kasz_all = paginator.page(1)
+    except EmptyPage:
+        kasz_all = paginator.page(paginator.num_pages)
 
     context = {
             "kasz_tab_data":kasz_all,
