@@ -35,13 +35,14 @@ KASZEROWANIE
   </tbody>
 </table>
 
+<!-- Paginator -->
 <div class="container">
-{% if kasz_tab_data.has_other_pages %}
+{% if paginator_data.has_other_pages %}
 <nav>
   <ul class="pagination justify-content-center">
-    {% if kasz_tab_data.has_previous %}
+    {% if paginator_data.has_previous %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ kasz_tab_data.previous_page_number }}" aria-label="Previous">
+      <a class="page-link" href="?page={{ paginator_data.previous_page_number }}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
@@ -51,17 +52,17 @@ KASZEROWANIE
     </li>
     {% endif %}
 
-    {% for p in kasz_tab_data.paginator.page_range %}
-    {% if kasz_tab_data.number == p %}
+    {% for p in paginator_data.paginator.page_range %}
+    {% if paginator_data.number == p %}
     <li class="page-item"><a class="page-link" style="color: red;" href="#">{{ p }}</a></li>
     {% else %}
     <li class="page-item"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
     {% endif %}
     {% endfor %}
 
-    {% if kasz_tab_data.has_next %}
+    {% if paginator_data.has_next %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ kasz_tab_data.next_page_number }}" aria-label="Next">
+      <a class="page-link" href="?page={{ paginator_data.next_page_number }}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

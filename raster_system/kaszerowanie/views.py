@@ -50,7 +50,8 @@ def kasz_list_all(request):
 
     context = {
             "kasz_tab_data":kasz_all,
-            "kasz_title":kasz_all_title
+            "kasz_title":kasz_all_title,
+            "paginator_data":kasz_all
             }
     return render(request,"kasz_list_table.html", context)
 
