@@ -7,11 +7,27 @@ from .forms import KaszForm
 # Create your views here.
 from .models import Kaszerowanie
 
-def kasz_list(request):
-    kasz_todo = Kaszerowanie.objects.filter(kasz_gotowe="False")
+# list of todo's for kaszerowanie
+def kasz_list_todo(request):
+    kasz_todo_set = Kaszerowanie.objects.filter(kasz_gotowe="False")
     kasz_todo_title = "zadania do wykonania"
-    # kasz_zrobione = Kaszerowanie.objects.filter(kasz_gotowe="True")
-    return render(request,"kasz_list_view.html", {"kasz_zrobic":kasz_todo, "title":kasz_todo_title} )
+    kasz_todo_page_number = request.GET.get('page')
+    paginator = Paginator(kasz_todo_set, 8)
+
+    try:
+        kasz_todo = paginator.page(kasz_todo_page_number)
+    except PageNotAnInteger:
+        kasz_todo = paginator.page(1)
+    except EmptyPage:
+        kasz_todo = paginator.page(paginator.num_pages)
+
+    context = {
+            "kasz_todo":kasz_todo,
+            "title":kasz_todo_title,
+            "paginator_data":kasz_todo
+            }
+
+    return render(request,"kasz_list_todo.html", context )
 
 def kasz_list_done(request):
     kasz_done= Kaszerowanie.objects.filter(kasz_gotowe="True").order_by("-created_date")
@@ -24,7 +40,6 @@ def kasz_list_all(request):
     kasz_all_title = "wszystkie zadania"
     kasz_page_number = request.GET.get('page')
     paginator = Paginator(kasz_all_set, 8)
-    # kasz_all = paginator.get_page(kasz_page_number)
 
     try:
         kasz_all = paginator.page(kasz_page_number)
