@@ -28,7 +28,7 @@ KASZEROWANIE
       <td>{{data.klient}}</td>
       <td>{{data.nazwa}}</td>
       <td> {{ data.kasz_wykonane}}/ {{data.kasz_zamówienie}}</td>
-      <td>{{data.mod_date}}</td>
+      <td>{{data.mod_date|date:"d-M-Y G:i"}}</td>
       <td class="jobstatus">{{data.kasz_gotowe}}</td>
     </tr>
     {% endfor %}
