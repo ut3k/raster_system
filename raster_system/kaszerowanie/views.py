@@ -1,5 +1,5 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, HttpResponse, redirect
 from django.views.generic import DetailView, ListView
 
 from .forms import KaszForm
@@ -74,15 +74,34 @@ class KaszerowanieDetailView (DetailView):
         return context
 
 
-def kasz_new(request):
-    if request.method == "POST":
-        form = PostForm(request.POST)
+# kasz create 
+def kasz_create(request):
+    title = "Nowe zadanie"
+    form = KaszForm()
+
+    if request.method == 'POST':
+        form = KaszForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('post_detail', pk=post.pk)
-        else:
-            form = PostForm()
-            return render(request, 'blog/post_edit.html', {'form': form})
+            form.save()
+            return redirect("/")
+
+
+
+    context = {
+            "title": title,
+            "form":form
+            }
+
+    return render(request, "kasz_create.html", context )
+
+
+
+    # if form.is_valid():
+        #     post = form.save(commit=False)
+        #     post.author = request.user
+        #     post.published_date = timezone.now()
+        #     post.save()
+        #     return redirect('post_detail', pk=post.pk)
+        # else:
+        #     form = PostForm()
+        #     return render(request, 'blog/post_edit.html', {'form': form})
