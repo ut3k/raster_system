@@ -6,6 +6,7 @@ migrations/
 .ropeproject
 db.sqlite3
 
+ras_sys_env/
 bin/
 lib/
 
