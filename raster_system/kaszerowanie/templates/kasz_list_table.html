@@ -24,12 +24,12 @@ KASZEROWANIE
   <tbody>
     {% for data in kasz_tab_data %}
     <tr class="bg-opacity-25">
-      <th scope="row">{{data.pk}}</th>
-      <td>{{data.klient}}</td>
-      <td>{{data.nazwa}}</td>
-      <td> {{ data.kasz_wykonane}}/ {{data.kasz_zamówienie}}</td>
-      <td>{{data.mod_date|date:"d-M-Y G:i"}}</td>
-      <td class="jobstatus">{{data.kasz_gotowe}}</td>
+      <td data-cell="KOD">{{data.pk}}</td>
+      <td data-cell="Klient">{{data.klient}}</td>
+      <td data-cell="Nazwa">{{data.nazwa}}</td>
+      <td data-cell="Stan"> {{ data.kasz_wykonane}}/ {{data.kasz_zamówienie}}</td>
+      <td data-cell="Modyfikacja">{{data.mod_date|date:"d-M-Y G:i"}}</td>
+      <td data-cell="Zakończone" class="jobstatus">{{data.kasz_gotowe}}</td>
     </tr>
     {% endfor %}
   </tbody>
