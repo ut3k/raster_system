@@ -3,3 +3,22 @@
     height: 100%;
   }
 }
+
+/* Table responsive formatting */
+
+@media (max-width: 700px){
+  td {
+    display:block;
+  }
+  td::before{
+    content:attr(data-cell) ": ";
+    font-weight:700;
+  }
+  tr {
+    border-bottom: white 1rem solid; 
+  }
+
+  th {
+    display:none;
+  }
+}
