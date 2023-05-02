@@ -94,7 +94,7 @@ def kasz_create(request):
 
     return render(request, "kasz_create.html", context )
 
-
+# kasz UPDATE
 def kasz_update(request,pk):
     title = "Aktualizacja"
     kasz_item = Kaszerowanie.objects.get(id=pk)
