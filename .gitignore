@@ -6,8 +6,9 @@ migrations/
 .ropeproject
 db.sqlite3
 
-bin/
-lib/
+ras_sys_env/
+bin/*
+lib/*
 
 *.pyc
 *__pycache__*
