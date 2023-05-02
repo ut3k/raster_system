@@ -5,6 +5,7 @@ from .views import (KaszerowanieDetailView,
                     kasz_list_done,
                     kasz_list_all,
                     kasz_create,
+                    kasz_update,
                     )
 
 
@@ -17,4 +18,5 @@ urlpatterns = [
     path('done', kasz_list_done , name='kasz_list_done'),
     path('kasz/<pk>/', KaszerowanieDetailView.as_view(), name='kasz_detail'),
     path('kasz_create/',kasz_create, name='kasz_create'),
+    path('kasz_update/<str:pk>',kasz_update, name='kasz_update'),
 ]
