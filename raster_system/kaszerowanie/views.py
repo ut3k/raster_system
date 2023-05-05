@@ -100,6 +100,7 @@ def kasz_update(request,pk):
     kasz_item = Kaszerowanie.objects.get(id=pk)
     form = KaszForm(instance=kasz_item)
 
+
     if request.method == 'POST':
         form = KaszForm(request.POST, instance=kasz_item)
         if form.is_valid():
@@ -108,9 +109,10 @@ def kasz_update(request,pk):
 
     context = {
             "title": title,
-            "form":form
+            "form":form,
+            "kasz":kasz_item
             }
-    return render(request, "kasz_create.html", context )
+    return render(request, "kasz_update.html", context )
 
 # Kasz DELETE
 def kasz_delete(request,pk):
