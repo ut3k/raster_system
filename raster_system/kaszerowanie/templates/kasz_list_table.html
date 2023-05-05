@@ -19,6 +19,7 @@ KASZEROWANIE
       <th scope="col">Stan</th>
       <th scope="col">Modyfikacja</th>
       <th scope="col">Zakończone</th>
+      <th scope="col">Działanie</th>
     </tr>
   </thead>
   <tbody>
@@ -30,6 +31,7 @@ KASZEROWANIE
       <td data-cell="Stan"> {{ data.kasz_wykonane}}/ {{data.kasz_zamówienie}}</td>
       <td data-cell="Modyfikacja">{{data.mod_date|date:"d-M-Y G:i"}}</td>
       <td data-cell="Zakończone" class="jobstatus">{{data.kasz_gotowe}}</td>
+      <td data-cell="Działanie"> <a href="{% url 'kaszerowanie:kasz_detail' data.pk %}" class='btn'>edytuj</a></td>
     </tr>
     {% endfor %}
   </tbody>
