@@ -7,11 +7,11 @@ KASZEROWANIE
 
 {% block content %}
 
-<div class="my-4 p-2 border bg-primary text-light">
+<div class="my-4 p-2 bg-dark text-light">
   <h5>Kaszerowanie: </h5>
   <h2>Klient: {{ object.klient }}</h2>
   <h3>Nazwa: {{ object.nazwa }}</h3>
-  <h4> kod kaszerowania: {{object.pk}}</h4>
+  <p>Kod kaszerowania: {{object.pk}}</p>
 </div>
 
 <div class="container">
@@ -21,15 +21,21 @@ KASZEROWANIE
   </div>
 </div>
 
-  <h4>Stan zmówienia</h4>
+<h4>Stan zmówienia</h4>
 <div class="my-4  py-1 px-2">
   <p>Wykonane: {{ object.kasz_wykonane }} / zamówione: {{ object.kasz_zamówienie }}</p>
-  <p class="jobstatus">Zadanie wykonane: {{ object.kasz_gotowe }}</p>
+  <p>Zadanie wykonane:</p>
+  <p class="jobstatus">{{ object.kasz_gotowe }}</p>
+</div>
+<div class="container">
+  <div class="my-2">
+    <a href="{% url 'kaszerowanie:kasz_update' object.pk %}" class='btn btn-primary'>Edytuj</a>
+  </div>
 </div>
 
 <div class="container">
-  <div class="my-4 mx-x p-2 border rounded">
-    <h4>Działania</h4>
+  <div class="my-4 mx-x p-2">
+    <h4>Historia zmian</h4>
     <ul>
       <li>data modyfikacji: {{ object.mod_date }}</li>
       <li>data utworzenia: {{ object.created_date }}</li>
