@@ -7,35 +7,32 @@ KASZEROWANIE
 
 {% block content %}
 
-<div class="conatiner">
-  <div class="my-4 mx-1 p-2 border bg-info text-light rounded">
-    <h5>kaszerowanie: </h5>
-    <h3>{{ object.klient }}/{{ object.nazwa }}</h3>
-    <h4> kod kaszerowania: {{object.pk}}</h4>
-  </div
+<div class="my-4 p-2 border bg-primary text-light">
+  <h5>Kaszerowanie: </h5>
+  <h2>Klient: {{ object.klient }}</h2>
+  <h3>Nazwa: {{ object.nazwa }}</h3>
+  <h4> kod kaszerowania: {{object.pk}}</h4>
 </div>
 
 <div class="container">
-  <div class="my-4  p-2 border rounded">
-    <p>Wydruk: {{ object.wydruk }}</p>
-    <p>Materiał: {{ object.material }}</p>
+  <div class="my-2">
+    <p><b>Wydruk:</b> {{ object.wydruk }} </p>
+    <p><b>Materiał:</b> {{ object.material }}</p>
   </div>
 </div>
 
-<div class="container">
-  <div class="my-4  p-2 border rounded">
-    <p>zamówione: {{ object.kasz_zamówienie }}</p>
-    <p>Wykonane: {{ object.kasz_wykonane }}</p>
-    <p>Zadanie wykonane: {{ object.kasz_gotowe }}</p>
-  </div>
+  <h4>Stan zmówienia</h4>
+<div class="my-4  py-1 px-2">
+  <p>Wykonane: {{ object.kasz_wykonane }} / zamówione: {{ object.kasz_zamówienie }}</p>
+  <p class="jobstatus">Zadanie wykonane: {{ object.kasz_gotowe }}</p>
 </div>
 
 <div class="container">
   <div class="my-4 mx-x p-2 border rounded">
-    <h4>status</h4>
+    <h4>Działania</h4>
     <ul>
-      <li>data utworzenia: {{ object.created_date }}</li>
       <li>data modyfikacji: {{ object.mod_date }}</li>
+      <li>data utworzenia: {{ object.created_date }}</li>
     </ul>
   </div>
 </div>
