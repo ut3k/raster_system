@@ -1,6 +1,5 @@
 from django.urls import path
 from .views import (KaszerowanieDetailView,
-                    KaszerowanieListView,
                     kasz_list_todo,
                     kasz_list_done,
                     kasz_list_all,
