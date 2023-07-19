@@ -83,7 +83,7 @@ def kasz_create(request):
         form = KaszForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/")
+            return redirect("kaszerowanie:kasz_list_all")
 
 
 

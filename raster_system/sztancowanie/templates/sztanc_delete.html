@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+usuń - kod: {{title}}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  
+  <div class="my-auto">
+    <p>Jesteś pewien że chcesz usunąć element o kodzie "{{sztanc.pk}}" i nazwie "{{sztanc.nazwa}}" dla klienta "{{ sztanc.klient }}"</p>
+    <form action='{% url 'sztancowanie:sztanc_delete' sztanc.pk %}' method="POST">
+     {% csrf_token %} 
+      <input class='btn btn-danger' type="submit" name="" value="Usuń">
+      <a href="{% url 'sztancowanie:sztanc_list_all' %}" class="btn btn-success">Anuluj</a>
+      
+    </form>
+  </div>
+</div>
+
+{% endblock %}

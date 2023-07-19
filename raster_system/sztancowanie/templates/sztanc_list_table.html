@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}
+SZTANCOWANIE
+{% endblock %}
+
+{% block content %}
+
+<div class="my-4 mx-1 p-1">
+  <h1> Sztancowanie - {{ title }}</h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">KOD</th>
+      <th scope="col">Klient</th>
+      <th scope="col">Nazwa</th>
+      <th scope="col">Stan</th>
+      <th scope="col">Modyfikacja</th>
+      <th scope="col">Zakończone</th>
+      <th scope="col">Działanie</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in kasz_tab_data %}
+    <tr class="bg-opacity-25">
+      <td data-cell="KOD">{{data.pk}}</td>
+      <td data-cell="Klient">{{data.klient}}</td>
+      <td data-cell="Nazwa">{{data.nazwa}}</td>
+      <td data-cell="Stan"> {{ data.szt_done}}/ {{data.szt_ordered}}</td>
+      <td data-cell="Modyfikacja">{{data.mod_date|date:"d-M-Y G:i"}}</td>
+      <td data-cell="Zakończone" class="jobstatus">{{data.szt_status}</td>
+      <td data-cell="Działanie"> <a href="{% url 'kaszerowanie:kasz_detail' data.pk %}" class='btn btn-light'>edytuj</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Paginator -->
+<div class="container">
+{% if paginator_data.has_other_pages %}
+<nav>
+  <ul class="pagination justify-content-center">
+    {% if paginator_data.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ paginator_data.previous_page_number }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <span class="page-link" aria-hidden="true">&laquo;</span>
+    </li>
+    {% endif %}
+
+    {% for p in paginator_data.paginator.page_range %}
+    {% if paginator_data.number == p %}
+    <li class="page-item"><a class="page-link" style="color: red;" href="#">{{ p }}</a></li>
+    {% else %}
+    <li class="page-item"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+    {% endif %}
+    {% endfor %}
+
+    {% if paginator_data.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ paginator_data.next_page_number }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <span class="page-link" aria-hidden="true">&raquo;</span>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+</div>
+
+{% endblock %}
