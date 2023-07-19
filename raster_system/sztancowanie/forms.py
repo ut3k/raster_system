@@ -7,11 +7,11 @@ class SztancForm(ModelForm):
 
     class Meta:
         model = Sztancowanie
-        fields =("nazwa",
-                 "klient",
+        fields =("name",
+                 "client",
                  "wykrojnik",
-                 "szt_zamówienie",
-                 "szt_wykonane",
-                 "szt_gotowe",
+                 "szt_ordered",
+                 "szt_done",
+                 "szt_status",
                  "szt_plan_date",
                  )

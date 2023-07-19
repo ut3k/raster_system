@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-KASZEROWANIE
+SZTANCOWANIE
 {% endblock %}
 
 {% block content %}
@@ -28,9 +28,9 @@ KASZEROWANIE
       <td data-cell="KOD">{{data.pk}}</td>
       <td data-cell="Klient">{{data.klient}}</td>
       <td data-cell="Nazwa">{{data.nazwa}}</td>
-      <td data-cell="Stan"> {{ data.kasz_wykonane}}/ {{data.kasz_zamówienie}}</td>
+      <td data-cell="Stan"> {{ data.szt_done}}/ {{data.szt_ordered}}</td>
       <td data-cell="Modyfikacja">{{data.mod_date|date:"d-M-Y G:i"}}</td>
-      <td data-cell="Zakończone" class="jobstatus">{{data.kasz_gotowe}}</td>
+      <td data-cell="Zakończone" class="jobstatus">{{data.szt_status}</td>
       <td data-cell="Działanie"> <a href="{% url 'kaszerowanie:kasz_detail' data.pk %}" class='btn btn-light'>edytuj</a></td>
     </tr>
     {% endfor %}

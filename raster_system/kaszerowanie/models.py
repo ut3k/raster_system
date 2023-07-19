@@ -5,13 +5,13 @@ from django.db import models
 
 
 class Kaszerowanie(models.Model):
-    nazwa = models.CharField(max_length=80)
-    wydruk = models.CharField(max_length=80)
-    klient = models.CharField(max_length=80)
+    name = models.CharField(max_length=80)
+    print = models.CharField(max_length=80)
+    client = models.CharField(max_length=80)
     material = models.CharField(max_length=80, default="mikrofala")
-    kasz_zamówienie = models.IntegerField(default=0)
-    kasz_wykonane = models.IntegerField(default=0)
-    kasz_gotowe = models.BooleanField(default=False)
+    kasz_ordered = models.IntegerField(default=0)
+    kasz_done = models.IntegerField(default=0)
+    kasz_status = models.BooleanField(default=False)
     # kasz_plan_date = models.DateField(default=timezone.now())
     created_date = models.DateTimeField(auto_now_add=True)
     # created_by =

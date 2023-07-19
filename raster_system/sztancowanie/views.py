@@ -53,10 +53,10 @@ def sztanc_create(request):
 
 def sztanc_delete(request,pk):
     sztanc_item = Sztancowanie.objects.get(id=pk)
-    title = "numer " + sztanc_item
+    title = str(sztanc_item.pk)
     context = {
             "sztanc":sztanc_item,
-            "title": title,
+            "title":title,
             }
     if request.method=="POST":
         sztanc_item.delete()

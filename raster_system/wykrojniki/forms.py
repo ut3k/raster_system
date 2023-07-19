@@ -6,8 +6,8 @@ class WykForm(forms.ModelForm):
     class Meta:
         model = Wykrojniki
         fields = [
-            "nazwa",
-            "wyk_wymiary",
+            "name",
+            "wyk_size",
             "wyk_kod",
             "wyk_image",
             "wyk_pdf",

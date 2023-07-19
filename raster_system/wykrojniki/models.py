@@ -4,10 +4,10 @@ from django.db import models
 
 
 class Wykrojniki(models.Model):
-    nazwa = models.CharField(max_length=120)
+    name = models.CharField(max_length=120)
     # group = models.ForeignKey(wyk_group)
     wyk_kod = models.CharField(max_length=16)
-    wyk_wymiary = models.CharField(
+    wyk_size = models.CharField(
         max_length=12, help_text="wymiary w milimetrach")
     # TODO - przygotuj skaner QR
     # wyk_qr = models.ImageField(upload_to="wykrojniki_qr", blank=True)

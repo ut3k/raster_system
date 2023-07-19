@@ -1,15 +1,16 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Kaszerowanie
 
-class KaszForm (ModelForm):
+class KaszForm (forms.ModelForm):
 
 
     class Meta:
         model = Kaszerowanie
-        fields = ("nazwa",
-                  "wydruk",
-                  "klient",
+        fields = ("name",
+                  "print",
+                  "client",
                   "material",
-                  "kasz_zamówienie",
-                  "kasz_wykonane",
-                  "kasz_gotowe",)
+                  "kasz_ordered",
+                  "kasz_done",
+                  "kasz_status",
+                  )
