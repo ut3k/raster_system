@@ -1,10 +1,12 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import HttpResponseRedirect, get_object_or_404, render
+from django.shortcuts import HttpResponseRedirect, get_object_or_404, render, redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 # from .forms import WykForm, WykImgUpdateFrom
 from .models import Sztancowanie
+
+from .forms import SztancForm
 
 # Create your views here.
 # Lista wszystkich zadań sztancowania
@@ -27,20 +29,41 @@ def sztanc_list_all(request):
             "paginator_data":kasz_all
             }
     return render(request,"sztanc_list_table.html", context)
-class SztancowanieListView(ListView):
-    model = Sztancowanie
-    template_name = "sztan_list_view.html"
-    paginate_by = 10
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
 
 
-class SztancowanieDetailView(DetailView):
-    model = Sztancowanie
-    template_name = "sztan_detail_view.html"
+# sztanc CREATE 
+def sztanc_create(request):
+    title = "Nowe zadanie"
+    form = SztancForm()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+    if request.method == 'POST':
+        form = SztancForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("sztancowanie:szt_list_all")
+
+
+
+    context = {
+            "title": title,
+            "form":form
+            }
+
+    return render(request, "sztanc_create.html", context )
+# class SztancowanieListView(ListView):
+#     model = Sztancowanie
+#     template_name = "sztan_list_view.html"
+#     paginate_by = 10
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context
+
+
+# class SztancowanieDetailView(DetailView):
+#     model = Sztancowanie
+#     template_name = "sztan_detail_view.html"
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context

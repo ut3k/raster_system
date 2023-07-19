@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+KASZEROWANIE 
+{% endblock %}
+
+{% block content %}
+
+<div class="my-4 mx-1 p-1">
+  <h1> Sztancowanie - {{ title }}</h1>
+</div>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+  </form>
+
+{% endblock %}
