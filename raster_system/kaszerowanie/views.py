@@ -94,14 +94,34 @@ def kasz_create(request):
 
     return render(request, "kasz_create.html", context )
 
+# kasz UPDATE
+def kasz_update(request,pk):
+    title = "Aktualizacja"
+    kasz_item = Kaszerowanie.objects.get(id=pk)
+    form = KaszForm(instance=kasz_item)
 
 
-    # if form.is_valid():
-        #     post = form.save(commit=False)
-        #     post.author = request.user
-        #     post.published_date = timezone.now()
-        #     post.save()
-        #     return redirect('post_detail', pk=post.pk)
-        # else:
-        #     form = PostForm()
-        #     return render(request, 'blog/post_edit.html', {'form': form})
+    if request.method == 'POST':
+        form = KaszForm(request.POST, instance=kasz_item)
+        if form.is_valid():
+            form.save()
+            return redirect('kaszerowanie:kasz_list_all')
+
+    context = {
+            "title": title,
+            "form":form,
+            "kasz":kasz_item
+            }
+    return render(request, "kasz_update.html", context )
+
+# Kasz DELETE
+def kasz_delete(request,pk):
+    kasz_item = Kaszerowanie.objects.get(id=pk)
+    context = {
+            "kasz":kasz_item,
+            }
+    if request.method=="POST":
+        kasz_item.delete()
+        return redirect('kaszerowanie:kasz_list_all')
+    return render(request, 'kasz_delete.html', context)
+

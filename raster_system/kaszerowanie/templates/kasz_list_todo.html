@@ -21,14 +21,9 @@ KASZEROWANIE
         <p class="m-1">{{ kasz.nazwa}}</p> 
         <p class="m-1">{{ kasz.kasz_wykonane }} / {{ kasz.kasz_zamówienie }}</p> 
       </div>
-      <!-- <div class="col d-flex"> -->
-      <!--   <p class="m-1">zaplanowano:</p>  -->
-      <!--   <p class="m-1">99-99-9999</p>  -->
-      <!-- </div> -->
       <div class="col d-flex">  
-        <a href="kasz/{{kasz.pk}}" class="btn btn-primary m-1">Edytuj</a>
-        <a href="#" class="btn btn-primary m-1">Dodaj</a>
-        <button class="btn btn-primary m-1" type="button" data-bs-toggle="collapse" data-bs-target="#element{{ kasz.pk }}" aria-expanded="false" aria-controls="collapseExample"> szczegóły</button>
+        <a href="{% url 'kaszerowanie:kasz_update' kasz.pk %}" class="btn btn-primary m-1">Edytuj</a>
+        <button class="btn btn-primary m-1" type="button" data-bs-toggle="collapse" data-bs-target="#element{{ kasz.pk }}" aria-expanded="false" aria-controls="collapseExample">Rozwiń</button>
       </div>
     </div>
     <div class="collapse" id="element{{ kasz.pk }}">

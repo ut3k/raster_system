@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+KASZEROWANIE 
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  
+  <div class="my-auto">
+    <p>Jesteś pewien że chcesz usunąć element o kodzie "{{kasz.pk}}" i nazwie "{{kasz.nazwa}}" dla klienta "{{ kasz.klient }}"</p>
+    <form action='{% url 'kaszerowanie:kasz_delete' kasz.pk %}' method="POST">
+     {% csrf_token %} 
+      <input class='btn btn-danger' type="submit" name="" value="Usuń">
+      <a href="{% url 'kaszerowanie:kasz_list_all' %}" class="btn btn-success">Anuluj</a>
+      
+    </form>
+  </div>
+</div>
+
+{% endblock %}

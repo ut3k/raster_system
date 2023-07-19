@@ -2,13 +2,14 @@
 
 .env
 migrations/
+env/
 
 .ropeproject
 db.sqlite3
 
 ras_sys_env/
-bin/
-lib/
+bin/*
+lib/*
 
 *.pyc
 *__pycache__*
