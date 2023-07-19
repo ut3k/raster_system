@@ -50,20 +50,15 @@ def sztanc_create(request):
             }
 
     return render(request, "sztanc_create.html", context )
-# class SztancowanieListView(ListView):
-#     model = Sztancowanie
-#     template_name = "sztan_list_view.html"
-#     paginate_by = 10
 
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         return context
-
-
-# class SztancowanieDetailView(DetailView):
-#     model = Sztancowanie
-#     template_name = "sztan_detail_view.html"
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         return context
+def sztanc_delete(request,pk):
+    sztanc_item = Sztancowanie.objects.get(id=pk)
+    title = "numer " + sztanc_item
+    context = {
+            "sztanc":sztanc_item,
+            "title": title,
+            }
+    if request.method=="POST":
+        sztanc_item.delete()
+        return redirect("sztancowanie:sztanc_list_all")
+    return render(request, "sztanc_delete.html", context)
