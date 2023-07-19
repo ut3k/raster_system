@@ -51,6 +51,7 @@ def sztanc_create(request):
 
     return render(request, "sztanc_create.html", context )
 
+
 def sztanc_delete(request,pk):
     sztanc_item = Sztancowanie.objects.get(id=pk)
     title = str(sztanc_item.pk)
@@ -62,3 +63,20 @@ def sztanc_delete(request,pk):
         sztanc_item.delete()
         return redirect("sztancowanie:sztanc_list_all")
     return render(request, "sztanc_delete.html", context)
+
+
+def sztanc_update(request,pk):
+    sztanc_item = Sztancowanie.objects.get(id=pk)
+    title = "Aktualizacja" + str(sztanc_item.pk)
+    context = {
+            "sztanc":sztanc_item,
+            "title":title
+            }
+    if request.method == "POST":
+        form = SztancForm(request.POST, instance = sztanc_item)
+        if form.is_valid():
+            form.save()
+        return redirect("sztancowanie:sztanc_list_all")
+    
+    return render(request, "sztanc_update.html", context )
+
