@@ -2,6 +2,7 @@
 
 .env
 migrations/
+env/
 
 .ropeproject
 db.sqlite3
