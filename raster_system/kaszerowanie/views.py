@@ -30,9 +30,9 @@ def kasz_list_todo(request):
     return render(request,"kasz_list_todo.html", context )
 
 def kasz_list_done(request):
-    kasz_done= Kaszerowanie.objects.filter(kasz_gotowe="True").order_by("-created_date")
-    kasz_done_title = "Zadania wykonane"
-    return render(request,"kasz_list_table.html", {"kasz_tab_data":kasz_done, "kasz_title":kasz_done_title})
+    kasz_done= Kaszerowanie.objects.filter(kasz_status="True").order_by("-created_date")
+    kasz_done_title = "zadania wykonane"
+    return render(request,"kasz_list_table.html", {"kasz_tab_data":kasz_done, "title":kasz_done_title})
 
 # table view all set
 def kasz_list_all(request):
@@ -50,7 +50,7 @@ def kasz_list_all(request):
 
     context = {
             "kasz_tab_data":kasz_all,
-            "kasz_title":kasz_all_title,
+            "title":kasz_all_title,
             "paginator_data":kasz_all
             }
     return render(request,"kasz_list_table.html", context)
