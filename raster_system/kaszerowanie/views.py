@@ -125,3 +125,19 @@ def kasz_delete(request,pk):
         return redirect('kaszerowanie:kasz_list_all')
     return render(request, 'kasz_delete.html', context)
 
+
+def kasz_status_done(request,pk):
+    kasz_item = Kaszerowanie.objects.get(id=pk)
+    form = KaszForm(instance=kasz_item)
+    title = "zadanie wykonane?"
+    context = {
+            "title":title,
+            "kasz":kasz_item,
+            "form":form,
+            }
+    if request.method == 'POST':
+        form = KaszForm(request.POST, instance=kasz_item)
+        if form.is_valid():
+            form.save()
+            return redirect('kaszerowanie:kasz_list_all')
+    return render(request, 'kasz_status_done.html', context)
