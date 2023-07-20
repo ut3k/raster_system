@@ -17,15 +17,15 @@
       </div>
     </li>
     <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-        Dashboard
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#kaszerowanie-collapse" aria-expanded="false">
+     Kaszerowanie
       </button>
-      <div class="collapse" id="dashboard-collapse">
+      <div class="collapse" id="kaszerowanie-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="#" class="link-dark rounded">Overview</a></li>
-          <li><a href="#" class="link-dark rounded">Weekly</a></li>
-          <li><a href="#" class="link-dark rounded">Monthly</a></li>
-          <li><a href="#" class="link-dark rounded">Annually</a></li>
+          <li><a href="{% url 'kaszerowanie:kasz_create' %}" class="link-primary rounded">Dodaj nowe zadanie</a></li>
+          <li><a href="{% url 'kaszerowanie:kasz_list_todo' %}" class="link-dark rounded">Zadania do zrobienia</a></li>
+          <li><a href="{% url 'kaszerowanie:kasz_list_all' %}" class="link-dark rounded">Wszystkie zadania</a></li>
+          <li><a href="{% url 'kaszerowanie:kasz_list_done' %}" class="link-dark rounded">Zadania zrobione</a></li>
         </ul>
       </div>
     </li>
