@@ -40,7 +40,7 @@ def sztanc_create(request):
         form = SztancForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("sztancowanie:szt_list_all")
+            return redirect("sztancowanie:sztanc_list_all")
 
 
 
