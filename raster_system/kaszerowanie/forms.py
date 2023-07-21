@@ -14,3 +14,13 @@ class KaszForm (forms.ModelForm):
                   "kasz_done",
                   "kasz_status",
                   )
+
+
+class KaszFormShort (forms.ModelForm):
+
+
+    class Meta:
+        model = Kaszerowanie
+        fields = ( "kasz_done",
+                  "kasz_status",
+                  )

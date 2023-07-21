@@ -11,15 +11,16 @@ KASZEROWANIE - {{ title }}
   <div class="my-auto">
     <p>Zadanie o kodzie <b>"{{kasz.pk}}"</b> </p> 
     <p>Nazwa: <b>"{{kasz.name}}"</b>, dla klienta: <b>"{{ kasz.client }}"</b></p>
-    <form method="POST">
+    <form action='{% url 'kaszerowanie:kasz_status_done' kasz.pk %}' method="POST">
       <label for="basic-url" class="form-label">Wykonane (szt):</label>
       <div class="input-group mb-3">
         {{form.kasz_done}}
         <span class="input-group-text" id="basic-addon3">/ {{ kasz.kasz_ordered }}</span>
       </div>
-      <div>
         <p>Zadanie skończone?</p>
+      <div class="d-flex align-items-baseline">
       {{ form.kasz_status}}
+      <p class="mx-2">zrobione</p>
       </div>
       {% csrf_token %} 
       <div class="my-3">

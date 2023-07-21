@@ -2,7 +2,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, HttpResponse, redirect
 from django.views.generic import DetailView, ListView
 
-from .forms import KaszForm
+from .forms import KaszForm, KaszFormShort
 
 # Create your views here.
 from .models import Kaszerowanie
@@ -125,10 +125,10 @@ def kasz_delete(request,pk):
         return redirect('kaszerowanie:kasz_list_all')
     return render(request, 'kasz_delete.html', context)
 
-
+# Quick status
 def kasz_status_done(request,pk):
     kasz_item = Kaszerowanie.objects.get(id=pk)
-    form = KaszForm(instance=kasz_item)
+    form = KaszFormShort(instance=kasz_item)
     title = "zadanie wykonane?"
     context = {
             "title":title,
@@ -136,8 +136,9 @@ def kasz_status_done(request,pk):
             "form":form,
             }
     if request.method == 'POST':
-        form = KaszForm(request.POST, instance=kasz_item)
+        form = KaszFormShort(request.POST, instance=kasz_item)
         if form.is_valid():
             form.save()
             return redirect('kaszerowanie:kasz_list_all')
+
     return render(request, 'kasz_status_done.html', context)
