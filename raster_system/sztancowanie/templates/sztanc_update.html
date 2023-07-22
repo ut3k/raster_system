@@ -6,8 +6,8 @@
 
 {% block content %}
 <div class='mb-4'>
-  <h1>Klient: {{kasz.klient}}</h1>
-  <h4>Edycja elementu {{kasz.nazwa}} o kodzie {{ kasz.pk }} </h4>
+  <h1>Klient: {{sztanc.klient}}</h1>
+  <h4>Edycja elementu {{sztanc.nazwa}} o kodzie {{ sztanc.pk }} </h4>
 </div>
 
 <div>
@@ -15,7 +15,7 @@
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Zapisz" class="btn btn-warning">
-    <a href="{% url 'kaszerowanie:kasz_list_all' %}" class='btn btn-success'>wroc do listy</a>
+    <a href="{% url 'sztancowanie:sztanc_list_all' %}" class='btn btn-success'>wroc do listy</a>
   </form>
 </div>
 {% endblock %}
