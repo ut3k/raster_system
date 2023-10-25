@@ -12,7 +12,7 @@ class Sztancowanie(models.Model):
     szt_ordered = models.DecimalField(max_digits=10, decimal_places=0)
     szt_done = models.DecimalField(max_digits=10, decimal_places=0)
     szt_status = models.BooleanField(default=False)
-    szt_plan_date = models.DateField(default=timezone.now())
+    szt_plan_date = models.DateField(default=timezone.now)
     created_date = models.DateTimeField(auto_now_add=True)
     # created_by =
     mod_date = models.DateTimeField(auto_now=True)

@@ -16,7 +16,7 @@ class Wydruki(models.Model):
     wyd_zamówienie = models.IntegerField(default=0)
     wyd_wykonane = models.IntegerField(default=0)
     wyd_gotowe = models.BooleanField(default=False)
-    wyd_plan_date = models.DateField(default=timezone.now())
+    wyd_plan_date = models.DateField(default=timezone.now)
     created_date = models.DateTimeField(auto_now_add=True)
     # created_by =
     mod_date = models.DateTimeField(auto_now=True)
