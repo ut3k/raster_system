@@ -10,6 +10,18 @@ KASZEROWANIE - {{ title }}
   <h1> Kaszerowanie - {{ title }}</h1>
 </div>
 
+<div class="my-5">
+    {% for data in kasz_tab_data %}
+  <div class="my-1">
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header primary" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{data.pk}}" aria-expanded="true" aria-controls="collapseOne">
+            KOD: {{data.pk}}, Klient: {{data.client}}, Nazwa: {{data.name}}, Stan: {{ data.kasz_done}}/ {{data.kasz_ordered}}
+          </button>
+        </h2>
+        <div id="collapse{{data.pk}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -23,7 +35,6 @@ KASZEROWANIE - {{ title }}
     </tr>
   </thead>
   <tbody>
-    {% for data in kasz_tab_data %}
     <tr class="bg-opacity-25">
       <td data-cell="KOD">{{data.pk}}</td>
       <td data-cell="Klient">{{data.client}}</td>
@@ -37,9 +48,15 @@ KASZEROWANIE - {{ title }}
         <a href="{% url 'kaszerowanie:kasz_delete' data.pk %}" class='btn btn-light mx-1'>usuń</a>
       </td>
     </tr>
-    {% endfor %}
   </tbody>
 </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+</div>
 
 <!-- Paginator -->
 <div class="container">
