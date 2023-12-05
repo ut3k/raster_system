@@ -3,15 +3,15 @@ windows:
   - window_name: lVim
     panes:
       - shell_command:
-        - source ras_sys_env/bin/activate
+        - source env/bin/activate
         - cd raster_system/
         - lvim
   - window_name: Info
     panes:
       - shell_command:
-        - source ras_sys_env/bin/activate
+        - source env/bin/activate
         - git status
       - shell_command:
-        - source ras_sys_env/bin/activate
+        - source env/bin/activate
         - cd raster_system/
         - python manage.py runserver
